@@ -37,9 +37,15 @@
                   <%= f.label :category_id %>
                     <%= f.collection_select :category_id, Category.all, :id, :name, {:prompt => "Categoria"}  , {:class=>'form-control'}  %>
                 </div>
+                
+                 <div class="field">
+                <%= f.label :price %>
+                <%= f.number_field :price, class: "form-control" %>
+                
+              </div>
            
             <div class="actions">
-              <%= f.submit %>
+              <%= f.submit "Crear Pelicula", class: "validar" %>
             </div>
         </div>
           

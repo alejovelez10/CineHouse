@@ -13,3 +13,10 @@
 *= require_tree .
 *= require_self
 */
+
+.alto
+{
+	height: 100px;
+	overflow: hidden;
+
+}

@@ -1,0 +1,37 @@
+Installation
+This gem vendors jquery fancybox for Rails 3.1 and greater. The files will be added to the asset pipeline and available for you to use.
+
+First add the following lines to your applications Gemfile:
+
+gem 'jquery-rails'
+gem 'fancybox-rails'
+Then run bundle install to update your application's bundle.
+
+Now you need to edit your app/assets/javascripts/application.js file and add the following line:
+
+//= require jquery
+//= require fancybox
+And then edit your app/assets/stylesheets/application.css file to look something like:
+
+/*
+ *= require_self
+ *= require fancybox
+ *= require_tree .
+ */
+Usage
+With the gem installed and included in your asset manifests, you can now use fancybox as you normally would.
+
+jQuery(function() {
+  $("a.fancybox").fancybox();
+});
+If you're using CoffeeScript you can use the plugin in the same way.
+
+jQuery ->
+  $('a.fancybox').fancybox()
+Customization
+If you want to customize the fancybox assets you can copy the assets from the gem into your application's lib/assets/ directory.
+
+$ rails generate fancybox_rails
+
+
+<%= link_to "Show mah Fancybox!", "#hello", class: "fancybox" %>

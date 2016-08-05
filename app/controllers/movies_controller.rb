@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all
+    @smovies = Movie.sum(:price)
   end
 
   # GET /movies/1
@@ -22,14 +23,20 @@ class MoviesController < ApplicationController
   end
 
   # POST /movies
-  # POST /movies.json
+  # POST /movies.jsontar -xzf ruby-2.3.0.tar.gz
+
   def create
     @movie = Movie.new(movie_params)
-
+    
     respond_to do |format|
       if @movie.save
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
+        @movies1 = Movie.all
+        @movies1.each do |movie|
+            movie.price = 2000
+            movie.save
+        end
       else
         format.html { render :new }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -69,6 +76,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:name, :description, :image, :category_id)
+      params.require(:movie).permit(:name, :description, :image, :category_id, :price)
     end
 end
